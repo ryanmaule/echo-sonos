@@ -57,6 +57,45 @@ MusicRadioIntent play {talking heads take me to the river|Name} radio in the {Ro
 MusicRadioIntent play {roberta flack killing me softly with his song|Name} radio in the {Room}
 MusicRadioIntent play {stevie wonder i just called to say i love you|Name} radio in the {Room}
 
+SiriusXMStationIntent play sirius XM {Station} in the {Room}
+SiriusXMStationIntent play SXM {Station} in the {Room}
+
+SiriusXMChannelIntent play sirius XM channel {Channel} in the {Room}
+SiriusXMChannelIntent play SXM channel {Channel} in the {Room}
+
+PandoraMusicIntent play pandora {madona|Name} in the {Room}
+PandoraMusicIntent play pandora {van morrison|Name} in the {Room}
+PandoraMusicIntent play pandora {the rolling stones|Name} in the {Room}
+PandoraMusicIntent play pandora {toad the wet sproket|Name} in the {Room}
+PandoraMusicIntent play pandora {KC and the sunshine band|Name} in the {Room}
+PandoraMusicIntent play pandora {john travolta and olivia newton john|Name} in the {Room}
+PandoraMusicIntent play pandora {DJ jazzy jeff and the fresh prince|Name} in the {Room}
+
+PandoraMusicIntent play pandora {lola|Name} in the {Room}
+PandoraMusicIntent play pandora {hello dolly|Name} in the {Room}
+PandoraMusicIntent play pandora {love me tender|Name} in the {Room}
+PandoraMusicIntent play pandora {when fools rush in|Name} in the {Room}
+PandoraMusicIntent play pandora {take me to the river|Name} in the {Room}
+PandoraMusicIntent play pandora {killing me softly with his song|Name} in the {Room}
+PandoraMusicIntent play pandora {i just called to say i love you|Name} in the {Room}
+
+PandoraMusicIntent play pandora {the kinks lola|Name} in the {Room}
+PandoraMusicIntent play pandora {louis armstrong hello dolly|Name} in the {Room}
+PandoraMusicIntent play pandora {elvis presley love me tender|Name} in the {Room}
+PandoraMusicIntent play pandora {UB forty fools rush in|Name} in the {Room}
+PandoraMusicIntent play pandora {talking heads take me to the river|Name} in the {Room}
+PandoraMusicIntent play pandora {roberta flack killing me softly with his song|Name} in the {Room}
+PandoraMusicIntent play pandora {stevie wonder i just called to say i love you|Name} in the {Room}
+PandoraMusicIntent play pandora {toad the wet sproket i will not Take these things for granted|Name} in the {Room}
+
+PandoraThumbsUpIntent give the current song in the {Room} a thumbs up
+PandoraThumbsUpIntent give the current song a thumbs up in the {Room}
+PandoraThumbsUpIntent give this song a thumbs up in the {Room}
+
+PandoraThumbsDownIntent give the current song in the {Room} a thumbs down
+PandoraThumbsDownIntent give the current song a thumbs down in the {Room}
+PandoraThumbsDownIntent give this song a thumbs down in the {Room}
+
 PlayIntent play preset {Preset}
 
 PlaylistIntent playlist {Preset} in {Room}
