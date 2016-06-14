@@ -13,7 +13,7 @@
         }   
       ]
     },
-
+    
     {
       "intent": "MusicRadioIntent",
       "slots": [
@@ -47,8 +47,71 @@
         }   
       ]
     },
-  
-    "intent": "PlayIntent",
+      
+    {  
+      "intent": "SiriusXMStationIntent",
+      "slots": [
+        {
+            "name": "Station",
+            "type": "SXMSTATIONS"
+        },
+        {
+            "name": "Room",
+            "type": "ROOMS"
+        }   
+      ]
+    },
+      
+    {  
+      "intent": "SiriusXMChannelIntent",
+      "slots": [
+        {
+            "name": "Channel",
+            "type": "SXMCHANNELS"
+        },
+        {
+            "name": "Room",
+            "type": "ROOMS"
+        }   
+      ]
+    },
+      
+    {
+      "intent": "PandoraMusicIntent",
+      "slots": [
+        {
+            "name": "Name",
+            "type": "AMAZON.LITERAL"
+        },
+        {
+            "name": "Room",
+            "type": "ROOMS"
+        }   
+      ]
+    },
+
+    {
+      "intent": "PandoraThumbsUpIntent",
+      "slots": [
+        {
+            "name": "Room",
+            "type": "ROOMS"
+        }   
+      ]
+    },
+
+    {
+      "intent": "PandoraThumbsDownIntent",
+      "slots": [
+        {
+            "name": "Room",
+            "type": "ROOMS"
+        }   
+      ]
+    },
+      
+    {
+      "intent": "PlayIntent",
         "slots": [
             {
                 "name": "Preset",
@@ -56,7 +119,7 @@
             }
         ]
     },
-
+ 
     {
       "intent": "PlaylistIntent",
       "slots": [
