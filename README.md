@@ -11,14 +11,18 @@ Global commands (no rooms required):
 
 Room-specific commands, where "ROOM" could be any of your Sonos room names (eg Kitchen, Master Bedroom, and so on):
 
-* Play songs from an artist: "Alex, tell Sonos to play ARTIST NAME in the ROOM
-* Play a song: "Alex, tell Sonos to play SONG NAME in the ROOM
-* Play a specific artist's song: "Alex, tell Sonos to play ARTIST NAME SONG NAME in the ROOM
-* Play "radio" songs like this artist: Alexa, tell Sonos to play ARTIST NAME radio in the ROOM
-* Play "radio" songs like this track: Alexa, tell Sonos to play SONG NAME radio in the ROOM
-* Play "radio" songs like this track from a specific artist: Alexa, tell Sonos to play ARTIST NAME SONG NAME radio in the ROOM
-* Play more "radio" songs like this song: Alexa, play more songs by this artist in the ROOM
-* Play more "radio" songs like this track: Alexa, play more songs like this in the ROOM
+* Play songs from an artist: "Alex, tell Sonos to play ARTIST NAME in the ROOM"
+* Play a song: "Alex, tell Sonos to play SONG NAME in the ROOM"
+* Play a specific artist's song: "Alex, tell Sonos to play ARTIST NAME SONG NAME in the ROOM"
+* Play "radio" songs like this artist: "Alexa, tell Sonos to play ARTIST NAME radio in the ROOM"
+* Play "radio" songs like this track: "Alexa, tell Sonos to play SONG NAME radio in the ROOM"
+* Play "radio" songs like this track from a specific artist: "Alexa, tell Sonos to play ARTIST NAME SONG NAME radio in the ROOM"
+* Play more "radio" songs like this song: "Alexa, tell Sonos to play more songs by this artist in the ROOM"
+* Play more "radio" songs like this track: "Alexa, tell Sonos to play more songs like this in the ROOM"
+* Play a SiriusXM station: "Alexa, tell Sonos to play Sirius xm STATION NAME in the ROOM"
+* Play a SiriusXM channel number: "Alexa, tell Sonos to play Sirius xm CHANNEL NUMBER in the ROOM"
+* Play one of your Pandora stations: "Alexa, tell Sonos to play Pandora STATION NAME in the ROOM"
+* Presets: "Alexa, play preset PRESET in the ROOM"
 * Playlists: "Alexa, tell Sonos to start playlist MY PLAYLIST in the ROOM"
 * Favorites: "Alexa, tell Sonos to play favorite MY FAVORITE in the ROOM"
 * Next: "Alexa, tell Sonos go to the next track in the ROOM"
@@ -55,7 +59,7 @@ Included here are the Alexa API definitions, the Lambda AWS service that catches
 
 To set it up, you need to do the following:
 
-# Get jishi's node-sonos-http-api working
+# Get jishi's node-sonos-http-api working (REQUIRES THE BETA VERION built with Promises)
 1. Install node.js on a server on the same network as your Sonos. 
 2. Grab https://github.com/jishi/node-sonos-http-api and run it on that server.  On Mac, it's "npm install https://github.com/jishi/node-sonos-http-api", then go to the directory created and "npm start".
 3. Take the node-sonos-http-api/presets.json that I have here and drop it into your node-sonos-http-api root directory. Modify it to use your speaker names and your favorite stations. Don't worry about the "uri" field - it's unused. Make sure the preset names are lowercase (like "test" and "rock" in my example). NOTE: You can skip this step if you only want to use Playlists and Favorites, which require no configuration.
@@ -74,7 +78,7 @@ To set it up, you need to do the following:
 1. Create a new Skill in the Alexa Skills control panel on Amazon. You need a developer account to do this.
 2. Name can be whatever you want. "Invocation" is what you say (I used "Sonos").
 3. Check Custom Interaction Model if it is not already checked. Click Next
-4. Click Next, taking you to Interaction Model. Create a Custom Slot Type ("Add Slot Type"). Add a new type for PRESETS, another for ROOMS, and a final one for TOGGLES. Into each, copy/paste the contents of [echo/custom_slots/PRESETS.slot.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/PRESETS.slot.txt), [echo/custom_slots/ROOMS.slot.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/ROOMS.slot.txt) and [echo/custom_slots/TOGGLES.slot.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/TOGGLES.slot.txt).
+4. Click Next, taking you to Interaction Model. Create a Custom Slot Type ("Add Slot Type"). Add a new type for PRESETS, another for ROOMS, another for SXMSTATIONS, another for SXMCHANNELS, and a final one for TOGGLES. Into each, copy/paste the contents of [echo/custom_slots/PRESETS.slot.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/PRESETS.slot.txt), [echo/custom_slots/ROOMS.slot.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/ROOMS.slot.txt) and [echo/custom_slots/sxmstatoins.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/ROOMS.slot.txt) and [echo/custom_slots/sxmchannels.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/ROOMS.slot.txt) and [echo/custom_slots/TOGGLES.slot.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/custom_slots/TOGGLES.slot.txt).
 5. Still in Interaction Model, copy this repo's [echo/intents.json](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/intents.json) into the "Intent Schema" field, and [echo/utterances.txt](https://raw.githubusercontent.com/rgraciano/echo-sonos/master/echo/utterances.txt) into "Sample Utterances".
 6. Don't test yet, just save. Click back to "Skill Information" and copy the "Application ID". You'll need this for Lambda.
 
