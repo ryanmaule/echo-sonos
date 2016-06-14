@@ -21,6 +21,7 @@ EchoSonos.prototype.constructor = EchoSonos;
 
 EchoSonos.prototype.intentHandlers = {
 
+
     MusicIntent: function (intent, session, response) {
         console.log("MusicIntent received");
         musicHandler(intent.slots.Room.value, '/queue/name:', intent.slots.Name.value, response);
@@ -39,6 +40,31 @@ EchoSonos.prototype.intentHandlers = {
     PlayMoreLikeTrackIntent: function (intent, session, response) {
         console.log("PlayMoreLikeTrackIntent received");
         moreMusicHandler(intent.slots.Room.value, '/radio/radio:', response);
+    },
+
+    SiriusXMStationIntent: function (intent, session, response) {
+        console.log("SiriusXMStationIntent received");
+        siriusXMHandler(intent.slots.Room.value, intent.slots.Station.value, 'station', response);
+    },
+
+    SiriusXMChannelIntent: function (intent, session, response) {
+        console.log("SiriusXMChannelIntent received");
+        siriusXMHandler(intent.slots.Room.value, intent.slots.Channel.value, 'channel', response);
+    },
+
+    PandoraMusicIntent: function (intent, session, response) {
+        console.log("PandoraMusicIntent received");
+        pandoraHandler(intent.slots.Room.value, '/play/', intent.slots.Name.value, response);
+    },
+
+    PandoraThumbsUpIntent: function (intent, session, response) {
+        console.log("PandoraThumbsUpIntent received");
+        pandoraHandler(intent.slots.Room.value, '/thumbsup', '', response);
+    },
+
+    PandoraThumbsDownIntent: function (intent, session, response) {
+        console.log("PandoraThumbsDownIntent received");
+        pandoraHandler(intent.slots.Room.value, '/thumbsdown', '', response);
     },
 
     PlayIntent: function (intent, session, response) {
@@ -202,9 +228,9 @@ function musicHandler(roomValue, cmdpath, name, response) {
     
     actOnCoordinator(options, skillPath, roomValue, function(error, responseBodyJson) {
         if (error) {
-            genericResponse(error, response);
+            response.tell(error.message);
         } else {
-            genericResponse(error, response, msgStart + name + msgEnd);
+            response.tell(msgStart + name + msgEnd);
         }
     });
 
@@ -222,6 +248,37 @@ function moreMusicHandler(roomValue, cmdpath, response) {
             musicHandler(roomValue, cmdpath, name, response);
         } else { 
             genericResponse(error, response);
+        }
+    });
+}
+
+/** Handles SiriusXM Radio */
+function siriusXMHandler(roomValue, name, type, response) {
+    var skillPath = '/siriusxm/' + encodeURIComponent(name.replace(' ','+'));
+    
+    actOnCoordinator(options, skillPath, roomValue, function(error, responseBodyJson) {
+        if (error) {
+            genericResponse(error, response);
+        } else {
+            response.tell('Sirius XM ' + type + ' ' + name + ' started');
+        }
+    });
+
+}
+
+/** Handles SiriusXM Radio */
+function pandoraHandler(roomValue, cmdpath, name, response) {
+    var skillPath = '/pandora' + cmdpath + ((cmdpath=='/play/')?encodeURIComponent(name):'');
+    
+    actOnCoordinator(options, skillPath, roomValue, function(error, responseBodyJson) {
+        if (error) {
+          response.tell(error.message);
+        } else {
+          if (cmdpath == '/play/') {
+            response.tell('Pandora ' + name + ' started');
+          } else {
+            genericResponse(error, response);
+          }  
         }
     });
 }
