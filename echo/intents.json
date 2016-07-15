@@ -47,14 +47,15 @@
         }   
       ]
     },
-  
-    "intent": "PlayIntent",
+    
+    {
+        "intent": "PlayIntent",
         "slots": [
-            {
-                "name": "Preset",
-                "type": "PRESETS"
-            }
-        ]
+        {
+            "name": "Preset",
+            "type": "PRESETS"
+        }
+      ]
     },
 
     {
